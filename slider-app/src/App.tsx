@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <div className="flex h-screen items-center justify-center text-4xl font-bold">
-      Slider App
-    </div>
-  );
+  return <div>Ola</div>;
 }
 
 export default App;
