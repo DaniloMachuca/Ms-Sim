@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "main": "electron/main.cjs",
+  "description": "MFSIM Telemetry Slider",
+  "author": "Danilo Machuca",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "electron": "electron ."
+    "electron": "electron .",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
@@ -34,5 +35,19 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.mfsim.slider",
+    "productName": "MFSIM Slider",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "portable"
+    }
   }
 }

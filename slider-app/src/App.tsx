@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="h-screen flex items-center justify-center bg-[#181818] text-[#E5E5E5]">
-      <div className="w-[520px] space-y-10">
+      <div className="w-130 space-y-10">
         <h1 className="text-3xl font-bold text-center text-[#41A3A3]">
           Telemetry Control
         </h1>
