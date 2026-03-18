@@ -21,6 +21,8 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 900,
     height: 700,
+    icon: path.join(__dirname, "../assets/icon.ico"),
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
     },
@@ -33,9 +35,12 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(() => {
-  ensureDataFile();
+const iconPath = path.join(__dirname, "../assets/icon.ico");
 
+app.whenReady().then(() => {
+  app.setAppUserModelId("com.mfsim.slider");
+
+  ensureDataFile();
   createWindow();
 });
 
