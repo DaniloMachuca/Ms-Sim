@@ -1,5 +1,5 @@
 {
-  "name": "slider-app",
+  "name": "mtc-danilo-machuca",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -38,7 +38,7 @@
   },
   "build": {
     "appId": "com.mfsim.slider",
-    "productName": "MFSIM Slider",
+    "productName": "MFSIM Telemetry Control — Danilo Machuca",
     "directories": {
       "output": "dist-electron"
     },

@@ -26,6 +26,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
     },
+    title: "MFSIM Telemetry Control — Danilo Machuca",
   });
 
   if (isDev) {
