@@ -19,76 +19,84 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-[#181818] text-[#E5E5E5]">
-      <div className="w-130 space-y-10">
-        <h1 className="text-3xl font-bold text-center text-[#41A3A3]">
-          Telemetry Control
+    <div className="h-screen bg-[#181818] text-white flex flex-col">
+      <div className="p-6 border-b border-[#2a2a2a]">
+        <h1 className="text-2xl font-semibold text-[#41A3A3]">
+          MFSIM Flight Telemetry Sliders
         </h1>
+        <p className="text-sm text-gray-400">Danilo Machuca</p>
+      </div>
+      <div className="flex-1 flex items-center justify-center gap-12">
+        <div className="w-130 space-y-10">
+          <h1 className="text-3xl font-bold text-center text-[#41A3A3]">
+            Telemetry Control
+          </h1>
 
-        {/* AIRSPEED */}
-        <div className="bg-[#232323] border border-[#3A3A3A] p-6 rounded-xl">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-[#A3A3A3]">Airspeed</span>
+          {/* AIRSPEED */}
+          <div className="bg-[#232323] border border-[#3A3A3A] p-6 rounded-xl">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-[#A3A3A3]">Airspeed</span>
 
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                min={0}
-                max={200}
-                value={airspeed}
-                className="w-20 bg-[#181818] border border-[#3A3A3A] rounded px-2 py-1 text-right"
-                onChange={(e) => {
-                  updateAirspeed(Number(e.target.value));
-                }}
-              />
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  min={0}
+                  max={200}
+                  value={airspeed}
+                  className="w-20 bg-[#181818] border border-[#3A3A3A] rounded px-2 py-1 text-right"
+                  onChange={(e) => {
+                    updateAirspeed(Number(e.target.value));
+                  }}
+                />
 
-              <span className="text-[#41A3A3]">kt</span>
+                <span className="text-[#41A3A3]">kt</span>
+              </div>
             </div>
+
+            <input
+              type="range"
+              min={0}
+              max={200}
+              value={airspeed}
+              className="w-full accent-[#41A3A3]"
+              onChange={(e) => {
+                updateAirspeed(Number(e.target.value));
+              }}
+            />
           </div>
 
-          <input
-            type="range"
-            min={0}
-            max={200}
-            value={airspeed}
-            className="w-full accent-[#41A3A3]"
-            onChange={(e) => {
-              updateAirspeed(Number(e.target.value));
-            }}
-          />
-        </div>
+          {/* VS */}
+          <div className="bg-[#232323] border border-[#3A3A3A] p-6 rounded-xl">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-[#A3A3A3]">Vertical Speed</span>
 
-        {/* VS */}
-        <div className="bg-[#232323] border border-[#3A3A3A] p-6 rounded-xl">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-[#A3A3A3]">Vertical Speed</span>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  min={-2000}
+                  max={2000}
+                  value={vs}
+                  className="w-24 bg-[#181818] border border-[#3A3A3A] rounded px-2 py-1 text-right"
+                  onChange={(e) => {
+                    updateVS(Number(e.target.value));
+                  }}
+                />
 
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                min={-2000}
-                max={2000}
-                value={vs}
-                className="w-24 bg-[#181818] border border-[#3A3A3A] rounded px-2 py-1 text-right"
-                onChange={(e) => {
-                  updateVS(Number(e.target.value));
-                }}
-              />
-
-              <span className="text-[#41A3A3]">ft/min</span>
+                <span className="text-[#41A3A3]">ft/min</span>
+              </div>
             </div>
-          </div>
 
-          <input
-            type="range"
-            min={-2000}
-            max={2000}
-            value={vs}
-            className="w-full accent-[#41A3A3]"
-            onChange={(e) => {
-              updateVS(Number(e.target.value));
-            }}
-          />
+            <input
+              type="range"
+              min={-2000}
+              max={2000}
+              value={vs}
+              className="w-full accent-[#41A3A3]"
+              onChange={(e) => {
+                updateVS(Number(e.target.value));
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
