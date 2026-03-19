@@ -13,6 +13,8 @@ function createWindow() {
     width: 900,
     height: 600,
     autoHideMenuBar: true,
+    title: "MFSIM Flight Instruments — Danilo Machuca",
+    icon: path.join(__dirname, "../assets/instrument-icon.ico"),
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
       contextIsolation: true,
