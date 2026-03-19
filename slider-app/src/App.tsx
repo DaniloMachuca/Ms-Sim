@@ -1,21 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [airspeed, setAirspeed] = useState(0);
   const [vs, setVs] = useState(0);
+  const isUpdatingFromFile = useRef(false);
 
-  const writeData = (a: number, v: number) => {
-    window.electronAPI.writeData(a, v);
-  };
+  useEffect(() => {
+    window.electronAPI.onDataUpdate((data) => {
+      isUpdatingFromFile.current = true;
+
+      setAirspeed(data.airspeed);
+      setVs(data.vs);
+
+      // libera depois de atualizar
+      setTimeout(() => {
+        isUpdatingFromFile.current = false;
+      }, 0);
+    });
+  }, []);
 
   const updateAirspeed = (val: number) => {
     setAirspeed(val);
-    writeData(val, vs);
+
+    if (!isUpdatingFromFile.current) {
+      window.electronAPI.writeData(val, vs);
+    }
   };
 
   const updateVS = (val: number) => {
     setVs(val);
-    writeData(airspeed, val);
+
+    if (!isUpdatingFromFile.current) {
+      window.electronAPI.writeData(airspeed, val);
+    }
   };
 
   return (
