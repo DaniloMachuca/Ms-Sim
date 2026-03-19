@@ -8,8 +8,12 @@ function mapAirspeedToAngle(value: number) {
   const calibration = [
     { value: 0, angle: 0 },
     { value: 40, angle: 30 },
+    { value: 60, angle: 71 },
+    { value: 80, angle: 116 },
     { value: 100, angle: 161 },
+    { value: 120, angle: 205 },
     { value: 160, angle: 269 },
+    { value: 180, angle: 291 },
     { value: 200, angle: 318 },
   ];
   for (let i = 0; i < calibration.length - 1; i++) {
