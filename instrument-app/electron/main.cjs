@@ -5,6 +5,7 @@ const fs = require("fs");
 const isDev = !app.isPackaged;
 
 const dataFile = "C:\\MFSIM DADOS\\dados.json";
+const dataFolder = "C:\\MFSIM DADOS";
 
 let win;
 
@@ -32,6 +33,7 @@ function createWindow() {
 function watchFile() {
   if (!fs.existsSync(dataFile)) {
     console.log("Arquivo não encontrado:", dataFile);
+    ensureDataFile();
     return;
   }
 
@@ -51,6 +53,16 @@ function watchFile() {
   });
 }
 
+function ensureDataFile() {
+  if (!fs.existsSync(dataFolder)) {
+    fs.mkdirSync(dataFolder);
+  }
+
+  if (!fs.existsSync(dataFile)) {
+    fs.writeFileSync(dataFile, JSON.stringify({ airspeed: 0, vs: 0 }, null, 2));
+  }
+}
+
 function sendCurrentData() {
   try {
     if (!fs.existsSync(dataFile)) return;
@@ -67,6 +79,8 @@ function sendCurrentData() {
 }
 
 app.whenReady().then(() => {
+  ensureDataFile();
+
   createWindow();
 
   win.webContents.once("did-finish-load", () => {
